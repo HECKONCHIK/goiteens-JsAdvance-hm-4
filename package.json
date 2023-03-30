@@ -1,0 +1,25 @@
+{
+  "name": "goiteens-jsadvance-hm-4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+"scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HECKONCHIK/goiteens-JsAdvance-hm-4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HECKONCHIK/goiteens-JsAdvance-hm-4/issues"
+  },
+  "homepage": "https://github.com/HECKONCHIK/goiteens-JsAdvance-hm-4#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-handlebars-precompile": "^1.0.2",
+    "parcel-plugin-nuke-dist": "^1.0.1"
+  }
+}
