@@ -1,6 +1,7 @@
-export default class newsApi  {
+export default class NewsApi  {
     constructor (){
-        this.searchQuery = ''
+        this.searchQuery = '',
+        this.page = 1
     }    
 
     fetchArticles(){
@@ -8,5 +9,9 @@ export default class newsApi  {
         .then(response=>response.json())
         .then(data=>data.articles)
         .then(articles=>console.log(articles))
-            }
+    }
+    
+    increasePage() {
+        this.page += 1
+    }
 }

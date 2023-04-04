@@ -1,4 +1,4 @@
-import newsApi from "./news-api";
+import NewsApi from "./news-api";
 
 const formRef = document.querySelector('.js-search-form');
 const articlesContainer = document.querySelector('.js-articles-container');
@@ -7,26 +7,19 @@ const loadMoreBtn = document.querySelector('[data-action="load-more"]');
 formRef.addEventListener('submit', onSearchForm);
 loadMoreBtn.addEventListener('click', onLoadMoreClick);
 
-const newsApiService = new newsApi();
-
-let searchQuery = '';
+const newsApiService = new NewsApi();
 
 function onSearchForm(event) {
     event.preventDefault();
     const form = event.currentTarget
-    searchQuery = form.elements.searchForm.value
 
-    fetchArticles(searchQuery);
+    newsApiService.searchQuery = form.elements.query.value
+
+    newsApiService.fetchArticles()
+
 }
-
-function fetchArticles(query) {
-    // fetch(`http://newsapi.org/v2/everything?q=${query}&language=en&pageSize=5&page=1&apikey=f58eaf87dd6248efaa19cf893b7b86fa`)
-    //     .then(response => response.json())
-    //     .then(data => data.articles)
-    //     .then(articles=>console.log(articles))
-}
-
 
 function onLoadMoreClick() {
-    fetchArticles(searchQuery);  
+    newsApiService.increasePage()
+    newsApiService.fetchArticles();  
 }
