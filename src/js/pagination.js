@@ -5,18 +5,16 @@ const formRef = document.querySelector('.js-search-form');
 const articlesContainer = document.querySelector('.js-articles-container');
 const loadMoreBtn = document.querySelector('[data-action="load-more"]');
 const input = document.querySelector('.form-control');
-const search = document.querySelector('.mb-2');
+const search = document.querySelector('.btn.btn-primary.mb-2');
 
 formRef.addEventListener('submit', onSearchForm);
 loadMoreBtn.addEventListener('click', onLoadMoreClick);
-input.addEventListener('focus', disabledButton);
+input.addEventListener('input', disabledButton);
 
 const newsApiService = new NewsApi();
 
 function disabledButton() {
-    if (input.value.length === 0) {
-        search.disabled = true;
-    } else {
+    if (input.value.length > 0) {
         search.disabled = false;
     }
 }
@@ -24,8 +22,6 @@ function disabledButton() {
 function onSearchForm(event) {
     event.preventDefault();
     const form = event.currentTarget;
-
-    input.value = '';
 
     articlesContainer.innerHTML = '';
 
@@ -37,7 +33,8 @@ function onSearchForm(event) {
     newsApiService.fetchArticles()
 
     .then(creatMarkup)
-
+    
+    input.value = '';
 }
 
 function onLoadMoreClick() {
@@ -45,10 +42,20 @@ function onLoadMoreClick() {
     console.log(newsApiService);
     newsApiService.fetchArticles()
     
-    .then(creatMarkup)
+        .then(creatMarkup)
+        .catch(
+            alert("Запит невірний(( Спробуйте ще раз!")
+        )
 }
 
 function creatMarkup(articles) {
-        const markup = paginationTpl(articles);
-        articlesContainer.insertAdjacentHTML('beforeend', markup);
+    const markup = paginationTpl(articles);
+    articlesContainer.insertAdjacentHTML('beforeend', markup);
+    
 }
+
+
+
+
+
+
