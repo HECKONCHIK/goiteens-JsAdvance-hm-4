@@ -14,7 +14,8 @@ export default class NewsApi  {
         return fetch(`${BASE_URL}everything?q=${this.searchQuery}&language=en&pageSize=5&page=${this.page}&apiKey=${API_KEY}`)
         .then(response=>response.json())
         .then(data=>data.articles)
-        .then(articles => articles)
+            .then(articles => articles)
+        // .catch(alert('Введіть коректну назву статті!'))
     }
     
     increasePage() {
