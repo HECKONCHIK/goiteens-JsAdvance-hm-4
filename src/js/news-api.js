@@ -15,9 +15,6 @@ export default class NewsApi  {
         .then(response=>response.json())
         .then(data=>data.articles)
             .then(articles => articles)
-            .catch(
-                alert("Запит невірний(( Спробуйте ще раз!")
-            )
     }
     
     increasePage() {

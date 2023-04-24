@@ -19,6 +19,10 @@ function disabledButton() {
     }
 }
 
+function disabledButtonLoadMore() {
+    
+}
+
 function onSearchForm(event) {
     event.preventDefault();
     const form = event.currentTarget;
@@ -34,6 +38,8 @@ function onSearchForm(event) {
 
     .then(creatMarkup)
     
+    loadMoreBtn.disabled = false;
+    
     input.value = '';
 }
 
@@ -43,8 +49,7 @@ function onLoadMoreClick() {
     newsApiService.fetchArticles()
     
         .then(creatMarkup)
-        .catch(
-            alert("Запит невірний(( Спробуйте ще раз!")
+        .catch(() => { alert("Запит невірний(( Спробуйте ще раз!") }
         )
 }
 
